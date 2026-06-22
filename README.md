@@ -1,20 +1,103 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Protz
 
-# Run and deploy your AI Studio app
+A modern web application built with Vite, TypeScript, and React.
 
-This contains everything you need to run your app locally.
+## 🚀 Features
 
-View your app in AI Studio: https://ai.studio/apps/b938dcbe-d08b-40c0-b9f0-1611c4921880
+- Fast and optimized Vite setup
+- TypeScript for type safety
+- Modern React architecture
+- Responsive design
+- Scalable project structure
+- Easy deployment workflow
 
-## Run Locally
+## 📂 Project Structure
 
-**Prerequisites:**  Node.js
+```bash
+Protz/
+├── assets/
+├── src/
+├── .env.example
+├── index.html
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
 
+## 🛠️ Tech Stack
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- React
+- TypeScript
+- Vite
+- CSS / Tailwind CSS (if used)
+
+## ⚡ Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/harsh4k/Protz.git
+cd Protz
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run development server
+
+```bash
+npm run dev
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+## 🌐 Deployment
+
+Deploy easily using:
+
+- Vercel
+- Netlify
+- GitHub Pages
+- Cloudflare Pages
+
+## 📸 Screenshots
+
+Add screenshots here once the project UI is complete.
+
+## 📈 Future Improvements
+
+- Authentication
+- Database integration
+- API integrations
+- Performance optimizations
+- Enhanced animations
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+### Developer
+
+**Harshit Chauhan**
+
+- GitHub: https://github.com/harsh4k
+- LinkedIn: https://linkedin.com/in/harshit-chauhan-17a898364
