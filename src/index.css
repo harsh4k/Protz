@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-bg-base: #0A0A0A;
+  --color-text-base: #F0EDE8;
+  --color-text-sec: rgba(240, 237, 232, 0.55);
+  --color-border-sec: rgba(240, 237, 232, 0.08);
+}
+
+/* Base rules */
+html, body {
+  background-color: #0A0A0A;
+  color: #F0EDE8;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar styling - raw, surgical brutalism */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(240, 237, 232, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(240, 237, 232, 0.5);
+}
+
+/* Minimal page scroll bar */
+::selection {
+  background-color: #F0EDE8;
+  color: #0A0A0A;
+}
+
+@keyframes marqueeLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 45s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 45s linear infinite;
+}
