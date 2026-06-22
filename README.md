@@ -73,10 +73,6 @@ Deploy easily using:
 - GitHub Pages
 - Cloudflare Pages
 
-## 📸 Screenshots
-
-Add screenshots here once the project UI is complete.
-
 ## 📈 Future Improvements
 
 - Authentication
