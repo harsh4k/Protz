@@ -3,12 +3,12 @@ import { TIMELINE } from "../data";
 
 export default function Journey() {
   const reducedMotion = useReducedMotion();
-
+  
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: reducedMotion ? 0 : 0.2,
+        staggerChildren: reducedMotion ? 0 : 0.15,
       },
     },
   };
@@ -25,95 +25,64 @@ export default function Journey() {
   return (
     <section
       id="path"
-      className="page-wrapper section-gap"
+      className="relative min-h-screen bg-[#0A0A0A] border-t border-[rgba(240,237,232,0.08)] py-24 select-none"
     >
-      <div className="flex flex-col" style={{ gap: "var(--spacing-60)" }}>
-        {/* Section Header */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={itemVariants}
-          className="flex flex-col"
-          style={{ gap: "var(--spacing-8)" }}
-        >
-          <span
-            className="font-ui w-350 text-caption uppercase"
-            style={{ color: "var(--fg-muted)" }}
-          >
-            History
+      <div className="max-w-[1600px] mx-auto px-6 md:px-16 w-full">
+        
+        <div className="flex justify-between items-baseline mb-20 border-b border-[rgba(240,237,232,0.08)] pb-8">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-[10px] tracking-[0.3em] text-[rgba(240,237,232,0.4)] uppercase">
+              (04)
+            </span>
+            <span className="w-10 h-[1px] bg-[rgba(240,237,232,0.15)]"></span>
+            <h2 className="font-sans font-black text-xl tracking-tight text-[#F0EDE8] uppercase">
+              THE PATH SO FAR
+            </h2>
+          </div>
+          <span className="font-mono text-xs tracking-wider text-[rgba(240,237,232,0.45)]">
+            (HISTORIC MILESTONES)
           </span>
-          <h2
-            className="font-display w-display-light text-heading-sm leading-display-tight"
-            style={{ color: "var(--fg)", letterSpacing: "-0.01em" }}
-          >
-            The Path So Far
-          </h2>
-          <div className="accent-tick" />
-        </motion.div>
+        </div>
 
-        {/* Timeline Entries */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-120px" }}
           className="flex flex-col"
-          style={{ gap: "var(--spacing-80)" }}
         >
           {TIMELINE.map((item, index) => (
             <motion.div
               key={item.year}
               variants={itemVariants}
-              className="grid grid-cols-1 md:grid-cols-12"
-              style={{ gap: "var(--spacing-40)" }}
+              className="flex flex-col md:grid md:grid-cols-12 gap-8 md:gap-16 py-16 md:py-24 border-b border-[rgba(240,237,232,0.08)] hover:bg-[rgba(240,237,232,0.005)] transition-colors duration-500 px-4 -mx-4 group"
             >
-              {/* Year - Caption Pair style */}
-              <div className="md:col-span-3">
-                <span
-                  className="font-caption caption-pair"
-                  style={{
-                    fontSize: "var(--text-subheading)",
-                    color: "var(--fg-muted)",
-                    fontStyle: "normal",
-                    fontWeight: 400,
-                  }}
-                >
-                  {item.year}
+              
+              <div className="md:col-span-4 flex items-baseline gap-4 select-none">
+                <span className="font-mono text-xs text-[rgba(240,237,232,0.35)] font-bold tracking-widest block w-8">
+                  [0{index + 1}]
                 </span>
+                <h3 className="font-sans font-black text-[12vw] md:text-[6.5vw] uppercase leading-none tracking-tighter text-[rgba(240,237,232,0.12)] group-hover:text-[rgba(240,237,232,0.6)] duration-700 transition-all">
+                  {item.year}
+                </h3>
               </div>
 
-              {/* Title + Description */}
-              <div className="md:col-span-9 flex flex-col" style={{ gap: "var(--spacing-15)" }}>
-                <h3
-                  className="font-display w-display-regular"
-                  style={{
-                    fontSize: "clamp(24px, 3vw, 42px)",
-                    lineHeight: 1.05,
-                    color: "var(--fg)",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
+              <div className="md:col-span-8 flex flex-col justify-center gap-4">
+                <h4 className="font-sans font-black text-xl md:text-2xl tracking-tight text-[#F0EDE8] uppercase">
                   {item.title}
-                </h3>
-                <p
-                  className="font-ui w-350 text-body"
-                  style={{ color: "var(--fg-muted)", lineHeight: 1.6, maxWidth: "540px" }}
-                >
+                </h4>
+                <p className="font-sans font-extralight text-base md:text-lg leading-relaxed text-[rgba(240,237,232,0.65)] max-w-2xl">
                   {item.description}
                 </p>
               </div>
+
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Footer note */}
-        <div
-          className="flex justify-between items-center font-ui w-350 text-caption uppercase"
-          style={{ color: "var(--fg-muted)", paddingTop: "var(--spacing-20)" }}
-        >
-          <span>Timeline Register // Version 2.6</span>
-          <span>Established in Mumbai, IN</span>
+        <div className="mt-16 flex justify-between items-center text-mono text-[9px] tracking-[0.25em] text-[rgba(240,237,232,0.35)] uppercase">
+          <div>TIMELINE REGISTER // VERSION 2.6</div>
+          <div>ESTABLISHED IN MUMBAI, IN</div>
         </div>
       </div>
     </section>

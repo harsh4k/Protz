@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import Lenis from "lenis";
-import { ThemeProvider } from "./context/ThemeContext";
-import NavHeader from "./components/NavHeader";
+
+import Loader from "./components/Loader";
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
@@ -10,6 +12,8 @@ import Journey from "./components/Journey";
 import Contact from "./components/Contact";
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     if (isMobile) return;
@@ -35,19 +39,39 @@ export default function App() {
   }, []);
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen w-full" style={{ backgroundColor: "var(--bg)", color: "var(--fg)" }}>
-        <div className="grain-overlay" />
-        <NavHeader />
-        <main className="w-full">
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-          <Journey />
-          <Contact />
-        </main>
-      </div>
-    </ThemeProvider>
+    <div className="relative min-h-screen w-full bg-[#0A0A0A] text-[#F0EDE8] overflow-hidden antialiased">
+      <div 
+        className="fixed inset-0 z-30 pointer-events-none opacity-[0.015] bg-repeat" 
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+        id="brutalist-grain-overlay"
+      />
+
+      <AnimatePresence mode="wait">
+        {loading ? (
+          <Loader key="loader" onComplete={() => setLoading(false)} />
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col w-full h-full"
+            id="portfolio-main-viewport"
+          >
+            <Navbar />
+            <main className="w-full flex flex-col">
+              <Hero />
+              <About />
+              <Projects />
+              <Skills />
+              <Journey />
+              <Contact />
+            </main>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

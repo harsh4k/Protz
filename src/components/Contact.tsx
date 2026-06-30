@@ -1,163 +1,112 @@
-import { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
-
-const socialLinks = [
-  {
-    label: "Email",
-    address: "harshitsinhchauhan250@gmail.com",
-    url: "mailto:harshitsinhchauhan250@gmail.com",
-    action: "copy",
-  },
-  {
-    label: "GitHub",
-    address: "@harshit-chauhan",
-    url: "https://github.com/harshit-chauhan",
-    action: "link",
-  },
-  {
-    label: "LinkedIn",
-    address: "Harshit Chauhan",
-    url: "#",
-    action: "link",
-  },
-  {
-    label: "Instagram",
-    address: "@harshit_chauhan",
-    url: "#",
-    action: "link",
-  },
-];
+import React, { useState, useReducedMotion } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
   const reducedMotion = useReducedMotion();
 
+  const socialLinks = [
+    {
+      label: "EMAIL",
+      address: "harshitsinhchauhan250@gmail.com",
+      url: "mailto:harshitsinhchauhan250@gmail.com"
+    },
+    {
+      label: "GITHUB",
+      address: "@harshit-chauhan",
+      url: "https://github.com/harshit-chauhan"
+    },
+    {
+      label: "LINKEDIN",
+      address: "Harshit Chauhan",
+      url: "#"
+    },
+    {
+      label: "INSTAGRAM",
+      address: "@harshit_chauhan",
+      url: "#"
+    }
+  ];
+
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("harshitsinhchauhan250@gmail.com");
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
   };
 
-  const fadeUp = {
-    hidden: reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: reducedMotion ? { duration: 0 } : { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
-    },
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
   };
 
   return (
     <footer
       id="contact"
-      className="page-wrapper"
-      style={{
-        paddingTop: "var(--spacing-120)",
-        paddingBottom: "var(--spacing-60)",
-      }}
+      className="relative min-h-screen flex flex-col justify-between bg-[#0A0A0A] border-t border-[rgba(240,237,232,0.08)] p-6 md:p-16 select-none overflow-hidden"
     >
-      <div className="flex flex-col min-h-[70vh] justify-between" style={{ gap: "var(--spacing-80)" }}>
-        {/* Top: CTA + Headline */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeUp}
-          className="flex flex-col"
-          style={{ gap: "var(--spacing-40)" }}
-        >
-          <div className="flex flex-col" style={{ gap: "var(--spacing-8)" }}>
-            <span
-              className="font-ui w-350 text-caption uppercase"
-              style={{ color: "var(--fg-muted)" }}
-            >
-              Connect
-            </span>
-            <h2
-              className="font-display w-display-light"
-              style={{
-                fontSize: "clamp(48px, 11vw, 140px)",
-                lineHeight: 0.85,
-                color: "var(--fg)",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Let&apos;s Build
-              <br />
-              Something.
-            </h2>
-            <div className="accent-tick" style={{ marginTop: "var(--spacing-10)" }} />
-          </div>
+      <div className="absolute right-[5vw] top-[10%] font-mono text-[16vw] text-[rgba(240,237,232,0.015)] pointer-events-none font-bold uppercase select-none">
+        MUMBAI
+      </div>
 
-          <a
-            href="mailto:harshitsinhchauhan250@gmail.com"
-            className="btn-cta self-start"
-          >
-            Get in Touch
-            <span className="arrow">→</span>
-          </a>
-        </motion.div>
+      <div className="flex justify-between items-start font-mono text-[10px] tracking-[0.3em] uppercase text-[rgba(240,237,232,0.4)] mt-4">
+        <div className="flex items-center gap-2">
+          <span>(05)</span>
+          <span>CONNECT LAYER</span>
+        </div>
+        <div>AVAILABLE WORLDWIDE</div>
+      </div>
 
-        {/* Bottom: Social links grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={fadeUp}
-        >
-          <div
-            className="grid grid-cols-2 md:grid-cols-4"
-            style={{ gap: "var(--spacing-20)" }}
-          >
-            {socialLinks.map((link) => (
-              <div key={link.label} className="flex flex-col" style={{ gap: "var(--spacing-8)" }}>
-                <span
-                  className="font-ui w-350 text-caption uppercase"
-                  style={{ color: "var(--fg-muted)" }}
-                >
+      <div className="my-auto py-12">
+        <div className="flex flex-col mix-blend-difference">
+          <h2 className="font-sans font-black text-[13vw] sm:text-[12vw] md:text-[11vw] uppercase leading-[0.78] tracking-tighter text-[#F0EDE8]">
+            LET'S
+          </h2>
+          <h2 className="font-sans font-black text-[13vw] sm:text-[12vw] md:text-[11vw] uppercase leading-[0.78] tracking-tighter text-[#F0EDE8] pl-[6vw]">
+            BUILD
+          </h2>
+          <h2 className="font-sans font-black text-[13vw] sm:text-[12vw] md:text-[11vw] uppercase leading-[0.78] tracking-tighter text-[#F0EDE8] pl-[12vw]">
+            SOMETHING.
+          </h2>
+        </div>
+      </div>
+
+      <div className="w-full border-t border-[rgba(240,237,232,0.08)] pt-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 justify-between items-start">
+          {socialLinks.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noreferrer"
+              key={link.label}
+              className="flex flex-col gap-2 group cursor-pointer border-l border-transparent hover:border-[rgba(240,237,232,0.15)] pl-3 transition-colors duration-500"
+            >
+              <div className="flex items-center gap-1">
+                <span className="font-mono text-[9px] tracking-[0.25em] text-[rgba(240,237,232,0.4)] uppercase">
                   {link.label}
                 </span>
-                {link.action === "copy" ? (
-                  <button
-                    onClick={handleCopyEmail}
-                    className="btn-ghost"
-                    style={{ padding: 0, textTransform: "none", letterSpacing: 0, border: "none" }}
-                  >
-                    {copied ? "Email copied!" : link.address}
-                  </button>
-                ) : (
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-ghost"
-                    style={{ padding: 0, textTransform: "none", letterSpacing: 0, border: "none" }}
-                  >
-                    {link.address}
-                  </a>
-                )}
+                <ArrowUpRight className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[rgba(240,237,232,0.6)]" />
               </div>
-            ))}
-          </div>
-        </motion.div>
+              <span className="font-sans font-extralight text-sm sm:text-base text-[#F0EDE8] group-hover:text-[rgba(240,237,232,0.6)] transition-all break-all leading-relaxed">
+                {link.address}
+              </span>
+            </a>
+          ))}
+        </div>
 
-        {/* Footer bar */}
-        <div
-          className="flex flex-col sm:flex-row justify-between items-start sm:items-center font-ui w-350 text-caption uppercase"
-          style={{
-            color: "var(--fg-muted)",
-            paddingTop: "var(--spacing-30)",
-            borderTop: "1px solid var(--border-subtle)",
-            gap: "var(--spacing-15)",
-          }}
-        >
-          <span>Designed &amp; Coded by Harshit Chauhan // &copy; 2026 Cores</span>
+        <div className="flex flex-col sm:flex-row justify-between items-center font-mono text-[9px] tracking-[0.25em] uppercase text-[rgba(240,237,232,0.3)] mt-16 pt-8 border-t border-[rgba(240,237,232,0.04)] gap-4">
+          <div>DESIGNED & CODED BY HARSHIT CHAUHAN // © 2026 CORES</div>
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="btn-ghost"
-            style={{ padding: 0, border: "none", letterSpacing: 0 }}
+            onClick={handleCopyEmail}
+            className="flex items-center gap-1 cursor-pointer hover:text-[#F0EDE8] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px]"
           >
-            Back to Top &uarr;
+            {copied ? "[EMAIL COPIED TO CLIPBOARD]" : "[CLICK TO COPY EMAIL]"}
+          </button>
+          <button
+            onClick={scrollToTop}
+            className="cursor-pointer hover:text-[#F0EDE8] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px]"
+          >
+            BACK TO TOP ↑
           </button>
         </div>
       </div>

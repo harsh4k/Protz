@@ -1,106 +1,71 @@
-import { motion, useReducedMotion } from "motion/react";
-
-const SKILL_AREAS = [
-  {
-    label: "Frontend",
-    skills: "React, Next.js, TypeScript, Tailwind CSS, Motion",
-  },
-  {
-    label: "Backend",
-    skills: "Node.js, Express, REST APIs, PostgreSQL, Prisma",
-  },
-  {
-    label: "Design",
-    skills: "UI/UX, Typographic Systems, Editorial Layout, Prototyping",
-  },
-  {
-    label: "R&D",
-    skills: "System Architecture, Performance Optimization, Emerging Tech",
-  },
-];
+import React from "react";
+import { GooeyText } from "./ui/gooey-text-morphing";
 
 export default function Skills() {
-  const reducedMotion = useReducedMotion();
-
-  const fadeUp = {
-    hidden: reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: reducedMotion ? { duration: 0 } : { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
+  const morphWords = [
+    "Design IS",
+    "Engineering",
+    "Space",
+    "Is awesome"
+  ];
 
   return (
     <section
       id="skills"
-      className="page-wrapper section-gap"
+      className="relative min-h-screen flex flex-col justify-center bg-[#070707] border-t border-[rgba(240,237,232,0.06)] py-20 select-none overflow-hidden"
     >
-      <div className="grid grid-cols-1 md:grid-cols-12" style={{ gap: "var(--spacing-60)" }}>
-        {/* Left: Display Headline */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeUp}
-          className="md:col-span-5 flex flex-col"
-          style={{ gap: "var(--spacing-20)" }}
-        >
-          <span
-            className="font-ui w-350 text-caption uppercase"
-            style={{ color: "var(--fg-muted)" }}
-          >
-            Capabilities
-          </span>
-          <h2
-            className="font-display w-display-light text-heading-sm leading-display-tight"
-            style={{ color: "var(--fg)", letterSpacing: "-0.01em" }}
-          >
-            With Great Power Comes Great Responsibility
-          </h2>
-          <div className="accent-tick" />
-          <p
-            className="font-ui w-350 text-body-sm"
-            style={{ color: "var(--fg-muted)", lineHeight: 1.6, marginTop: "var(--spacing-10)" }}
-          >
-            A fluid intersection where design, engineering, and curiosity collide. Crafting beautiful user experiences takes a harmony of bold imagination and meticulous implementation.
-          </p>
-        </motion.div>
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.08)] to-transparent pointer-events-none" />
+      
+      <div className="absolute left-[6vw] top-0 bottom-0 w-[1px] bg-[rgba(255,255,255,0.015)] pointer-events-none" />
+      <div className="absolute right-[6vw] top-0 bottom-0 w-[1px] bg-[rgba(255,255,255,0.015)] pointer-events-none" />
 
-        {/* Right: Skills List */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeUp}
-          className="md:col-span-6 md:col-start-7 flex flex-col"
-          style={{ gap: "var(--spacing-30)" }}
-        >
-          {SKILL_AREAS.map((area) => (
-            <div
-              key={area.label}
-              className="flex flex-col"
-              style={{
-                gap: "var(--spacing-8)",
-                paddingBottom: "var(--spacing-20)",
-                borderBottom: "1px solid var(--border-subtle)",
-              }}
-            >
-              <span
-                className="font-ui w-350 text-caption uppercase tracking-wider"
-                style={{ color: "var(--fg-muted)" }}
-              >
-                {area.label}
-              </span>
-              <span
-                className="font-display w-display-regular text-subheading"
-                style={{ color: "var(--fg)", lineHeight: 1.3 }}
-              >
-                {area.skills}
-              </span>
+      <div 
+        id="skills-interactive-container"
+        className="max-w-[1500px] mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col gap-12"
+      >
+        <div className="flex justify-between items-baseline border-b border-[rgba(240,237,232,0.08)] pb-8 mb-4">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-[10px] tracking-[0.3em] text-[rgba(240,237,232,0.4)] uppercase">
+              (03)
+            </span>
+            <span className="w-10 h-[1px] bg-[rgba(240,237,232,0.15)]"></span>
+            <h2 className="font-sans font-black text-xl tracking-tight text-[#F0EDE8] uppercase">
+              WITH GREAT POWER COMES GREAT RESPONSIBILITY
+            </h2>
+          </div>
+          <span className="font-mono text-[10px] tracking-widest text-[rgba(240,237,232,0.35)] uppercase hidden sm:inline">
+            Active Morphing Matrix
+          </span>
+        </div>
+
+        <div className="max-w-5xl mx-auto w-full">
+          
+          <div className="w-full flex items-center justify-center border border-[rgba(240,237,232,0.08)] bg-zinc-950/40 relative overflow-hidden backdrop-blur p-12 sm:p-20 min-h-[400px] md:min-h-[520px] rounded-lg">
+            
+            <div className="w-full flex items-center justify-center relative z-10 py-16">
+              <div className="relative">
+                <div className="absolute inset-0 bg-white/5 blur-[75px] rounded-full pointer-events-none transition-all duration-1000" />
+                
+                <GooeyText
+                  texts={morphWords}
+                  morphTime={1.0}
+                  cooldownTime={0.35}
+                  className="font-sans font-black tracking-tighter"
+                  textClassName="text-[#F0EDE8] text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase font-extrabold"
+                />
+              </div>
             </div>
-          ))}
-        </motion.div>
+
+          </div>
+
+        </div>
+
+        <div className="max-w-2xl mx-auto text-center mt-4">
+          <p className="font-sans font-extralight text-xs leading-relaxed text-[rgba(240,237,232,0.4)]">
+            A fluid, typographic showcase where design, engineering, and space collide. Just as great power requires great responsibility, crafting beautiful user experiences takes a perfect harmony of bold imagination and meticulous implementation.
+          </p>
+        </div>
+
       </div>
     </section>
   );
