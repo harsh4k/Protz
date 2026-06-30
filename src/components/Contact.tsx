@@ -1,32 +1,11 @@
-import React, { useState, useReducedMotion } from "react";
+import { useState } from "react";
+import { useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { SOCIAL_LINKS } from "../data";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
   const reducedMotion = useReducedMotion();
-
-  const socialLinks = [
-    {
-      label: "EMAIL",
-      address: "harshitsinhchauhan250@gmail.com",
-      url: "mailto:harshitsinhchauhan250@gmail.com"
-    },
-    {
-      label: "GITHUB",
-      address: "@harshit-chauhan",
-      url: "https://github.com/harshit-chauhan"
-    },
-    {
-      label: "LINKEDIN",
-      address: "Harshit Chauhan",
-      url: "#"
-    },
-    {
-      label: "INSTAGRAM",
-      address: "@harshit_chauhan",
-      url: "#"
-    }
-  ];
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("harshitsinhchauhan250@gmail.com");
@@ -73,7 +52,7 @@ export default function Contact() {
 
       <div className="w-full border-t border-[rgba(240,237,232,0.08)] pt-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 justify-between items-start">
-          {socialLinks.map((link) => (
+          {SOCIAL_LINKS.map((link) => (
             <a
               href={link.url}
               target="_blank"

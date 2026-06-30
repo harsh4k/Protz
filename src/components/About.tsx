@@ -1,4 +1,3 @@
-import React from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Gamepad2, Compass, Award } from "lucide-react";
 
@@ -10,7 +9,7 @@ export default function About() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: reducedMotion ? { duration: 0 } : { duration: 0.95, ease: [0.16, 1, 0.3, 1] },
+      transition: reducedMotion ? { duration: 0 } : { duration: 0.95, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
     },
   };
 

@@ -1,4 +1,4 @@
-import { Project, TimelineItem } from "./types";
+import { Project, TimelineItem, SocialLink } from "./types";
 import projectOne from "./assets/images/project_one_1781587631359.jpg";
 import projectTwo from "./assets/images/project_two_1781587647833.jpg";
 import projectThree from "./assets/images/project_three_1781587664208.jpg";
@@ -51,5 +51,28 @@ export const TIMELINE: TimelineItem[] = [
     year: "2026",
     title: "Advanced Systems & Aesthetic Design",
     description: "Engineering fluid, responsive micro-interactions inspired by sci-fi and immersive game worlds, while building optimized, highly reliable web solutions."
+  }
+];
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    label: "EMAIL",
+    address: "harshitsinhchauhan250@gmail.com",
+    url: "mailto:harshitsinhchauhan250@gmail.com"
+  },
+  {
+    label: "GITHUB",
+    address: "@harshit-chauhan",
+    url: "https://github.com/harshit-chauhan"
+  },
+  {
+    label: "LINKEDIN",
+    address: "Harshit Chauhan",
+    url: "https://linkedin.com/in/harshit-chauhan"
+  },
+  {
+    label: "INSTAGRAM",
+    address: "@harshit_chauhan",
+    url: "https://instagram.com/harshit_chauhan"
   }
 ];

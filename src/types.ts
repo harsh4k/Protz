@@ -14,3 +14,9 @@ export interface TimelineItem {
   title: string;
   description: string;
 }
+
+export interface SocialLink {
+  label: string;
+  address: string;
+  url: string;
+}

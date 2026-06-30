@@ -1,4 +1,3 @@
-import React from "react";
 import { GooeyText } from "./ui/gooey-text-morphing";
 
 export default function Skills() {

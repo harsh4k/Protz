@@ -17,9 +17,11 @@ export default function Projects() {
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (reducedMotion || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
+    requestAnimationFrame(() => {
+      const rect = containerRef.current!.getBoundingClientRect();
+      mouseX.set(e.clientX - rect.left);
+      mouseY.set(e.clientY - rect.top);
+    });
   }, [reducedMotion, mouseX, mouseY]);
 
   const handleMouseEnter = useCallback((idx: number) => {
@@ -122,6 +124,7 @@ export default function Projects() {
                 <img
                   src={PROJECTS[hoveredIdx].visual}
                   alt={PROJECTS[hoveredIdx].title}
+                  loading="lazy"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover filter grayscale contrast-110 ease-out transition-transform duration-700 active:scale-105"
                 />

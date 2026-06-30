@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 
 interface LoaderProps {
   onComplete: () => void;
-  key?: string;
 }
 
 export default function Loader({ onComplete }: LoaderProps) {
@@ -12,29 +11,26 @@ export default function Loader({ onComplete }: LoaderProps) {
   const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    const duration = reducedMotion ? 0 : 2800;
-    const timer = setTimeout(() => {
+    if (reducedMotion) {
       onComplete();
-    }, duration);
-
-    if (!reducedMotion) {
-      const interval = setInterval(() => {
-        setDots((prev) => (prev.length >= 3 ? "" : prev + "."));
-      }, 450);
-
-      return () => {
-        clearInterval(interval);
-        clearTimeout(timer);
-      };
+      return;
     }
 
-    return () => clearTimeout(timer);
+    const timer = setTimeout(() => {
+      onComplete();
+    }, 2800);
+
+    const interval = setInterval(() => {
+      setDots((prev) => (prev.length >= 3 ? "" : prev + "."));
+    }, 450);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timer);
+    };
   }, [onComplete, reducedMotion]);
 
   if (reducedMotion) {
-    useEffect(() => {
-      onComplete();
-    }, [onComplete]);
     return null;
   }
 
@@ -50,7 +46,7 @@ export default function Loader({ onComplete }: LoaderProps) {
       y: "-100%",
       transition: {
         duration: 0.95,
-        ease: [0.76, 0, 0.24, 1],
+        ease: [0.76, 0, 0.24, 1] as [number, number, number, number],
       },
     },
   };
@@ -62,7 +58,7 @@ export default function Loader({ onComplete }: LoaderProps) {
       y: 0,
       transition: {
         duration: 0.55,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
       },
     },
   };

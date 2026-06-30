@@ -1,9 +1,7 @@
-import React from "react";
 import { motion } from "motion/react";
 
 export default function Navbar() {
-  const scrollToSection = (id: string, e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+  const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -21,50 +19,45 @@ export default function Navbar() {
       <div className="max-w-[1600px] mx-auto flex items-center justify-between font-mono text-[10px] tracking-[0.2em] uppercase select-none">
         
         <div className="flex gap-6 md:gap-10 w-1/3 justify-start">
-          <a
-            href="#work"
-            onClick={(e) => scrollToSection("work", e)}
-            className="text-[#F0EDE8] hover:text-[rgba(240,237,232,0.55)] cursor-pointer tracking-[0.2em] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px]"
+          <button
+            onClick={() => scrollToSection("work")}
+            className="text-[#F0EDE8] hover:text-[rgba(240,237,232,0.55)] cursor-pointer tracking-[0.2em] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px] bg-transparent border-none p-0"
             id="nav-link-work"
           >
             WORK
-          </a>
-          <a
-            href="#about"
-            onClick={(e) => scrollToSection("about", e)}
-            className="text-[#F0EDE8] hover:text-[rgba(240,237,232,0.55)] cursor-pointer tracking-[0.2em] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px]"
+          </button>
+          <button
+            onClick={() => scrollToSection("about")}
+            className="text-[#F0EDE8] hover:text-[rgba(240,237,232,0.55)] cursor-pointer tracking-[0.2em] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px] bg-transparent border-none p-0"
             id="nav-link-about"
           >
             ABOUT
-          </a>
+          </button>
         </div>
 
-        <a
-          href="#"
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-          className="text-center font-sans font-black text-xs md:text-sm tracking-[0.3em] text-[#F0EDE8] hover:opacity-80 transition-opacity cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px] w-1/3 flex justify-center"
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="text-center font-sans font-black text-xs md:text-sm tracking-[0.3em] text-[#F0EDE8] hover:opacity-80 transition-opacity cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px] w-1/3 flex justify-center bg-transparent border-none"
           id="nav-anchor"
         >
           HARSHIT CHAUHAN
-        </a>
+        </button>
 
         <div className="flex gap-6 md:gap-10 w-1/3 justify-end text-right">
-          <a
-            href="#path"
-            onClick={(e) => scrollToSection("path", e)}
-            className="text-[#F0EDE8] hover:text-[rgba(240,237,232,0.55)] cursor-pointer tracking-[0.2em] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px]"
+          <button
+            onClick={() => scrollToSection("path")}
+            className="text-[#F0EDE8] hover:text-[rgba(240,237,232,0.55)] cursor-pointer tracking-[0.2em] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px] bg-transparent border-none p-0"
             id="nav-link-path"
           >
             PATH
-          </a>
-          <a
-            href="#contact"
-            onClick={(e) => scrollToSection("contact", e)}
-            className="text-[#F0EDE8] hover:text-[rgba(240,237,232,0.55)] cursor-pointer tracking-[0.2em] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px]"
+          </button>
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="text-[#F0EDE8] hover:text-[rgba(240,237,232,0.55)] cursor-pointer tracking-[0.2em] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(240,237,232,0.5)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] rounded-[2px] bg-transparent border-none p-0"
             id="nav-link-contact"
           >
             CONTACT
-          </a>
+          </button>
         </div>
       </div>
     </motion.nav>

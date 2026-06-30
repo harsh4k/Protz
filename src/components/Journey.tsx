@@ -18,7 +18,7 @@ export default function Journey() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: reducedMotion ? { duration: 0 } : { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
+      transition: reducedMotion ? { duration: 0 } : { duration: 0.85, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
     },
   };
 
